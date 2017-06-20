@@ -38,7 +38,7 @@ header h1 {
     padding: 0 60px 0 0;
 }
 
-header button {
+header a {
     width: 50px;
     height: 50px;
     position: absolute;
@@ -55,7 +55,16 @@ header button {
     -moz-appearance: none;
 }
 
-header button svg {
+header a:hover {
+    background: #ccc;
+    transition: background 0.2s ease;
+}
+
+header a:focus {
+    background: #fff;
+}
+
+header a svg {
     width: 16px;
     height: 16px;
     position: absolute;
@@ -64,6 +73,6 @@ header button svg {
     margin: -8px 0 0 -8px;
 }
 
-header button svg .fill {
+header a svg .fill {
     fill: var(--purple);
 }
