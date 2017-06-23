@@ -54,13 +54,37 @@
     <div id="addModal" class="modal modal-fixed-footer">
         <div class="modal-content">
             <h4>Add a product</h4>
-            <p>mksdlfjs</p>
+            <br>
+            <form>
+                <div class="container">
+                    <div class="input-field s12 m6 offset-m3 l4 offset-l4 ">
+                        <input id="productName" type="text" class="validate">
+                        <label for="productName">Product Name</label>
+                    </div>
+
+                    <div class="input-field s12 m6 offset-m3 l4 offset-l4 ">
+                        <input id="packagingSize" type="number" class="validate">
+                        <label for="packagingSize" data-error="Only numbers are allowed">Packaging Size</label>
+                    </div>
+                    <div class="input-field s12 m6 offset-m3 l4 offset-l4 ">
+                        <input id="quantity" type="number" class="validate">
+                        <label for="quantity" data-error="Only numbers are allowed">Quantity</label>
+                    </div>
+
+                    <div class="input-field s12 m6 offset-m3 l4 offset-l4 ">
+                        <input id="expirationDate" type="date" class="datepicker">
+                        <label for="expirationDate">Productname</label>
+                    </div>
+                </div>
+            </form>
+
+
         </div>
 
         <div class="modal-footer">
             <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
 
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat ">Cancel</a>
 
         </div>
     </div>

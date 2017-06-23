@@ -76,3 +76,19 @@ header a svg {
 header a svg .fill {
     fill: var(--purple);
 }
+
+
+/*changing label colors*/
+
+.input-field input[type=text]:focus+label,
+.input-field input[type=number]:focus+label,
+.input-field input[type=date]:focus+label {
+    color: var(--yellow);
+}
+
+input[type=number]:focus:not([readonly]),
+input[type=text]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]) {
+    border-bottom: 1px solid var(--yellow);
+    box-shadow: 0 1px 0 0 var(--yellow);
+}
