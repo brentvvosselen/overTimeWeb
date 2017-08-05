@@ -1,6 +1,7 @@
 //THE LOCAL STORAGE OF THE PRODUCTLIST
 var products = (localStorage.getItem('productList')) ? JSON.parse(localStorage.getItem('productList')) : {
-    productList: []
+    productList: [],
+    idList: []
 }
 
 //PRODUCT OBJECT
@@ -37,6 +38,12 @@ $(document).ready(function () {
     //RENDER PRODUCTS
     renderProducts();
 
+    //SUBTRACT QUANTITY
+    $(document).delegate('.btn-subtract', 'click', function () {
+        var id = this.parentNode.parentNode.id;
+        subtractFromItem(id);
+    });
+
 
 });
 
@@ -44,6 +51,7 @@ $(document).ready(function () {
 function addProduct(name, quantity, packagingSize, expirationDate) {
     var product = new Product(name, quantity, packagingSize, expirationDate);
     products.productList.push(product);
+    products.idList.push(name);
     updateProducts();
     renderProduct(product);
 }
@@ -56,6 +64,7 @@ function updateProducts() {
 
 //function to render all the products from JSON
 function renderProducts() {
+    $("#productsHTML").empty();
     for (var i = 0; i < products.productList.length; i++) {
         var value = products.productList[i];
         renderProduct(value);
@@ -65,32 +74,42 @@ function renderProducts() {
 //function to render one product to the end of the list
 function renderProduct(product) {
 
-    $subtractBtn = $("<a>").addClass("btn-floating halfway-fab waves-effect waves-light red").append($("<i>").addClass("material-icons").text("trending_down"));
+    $subtractBtn = $("<a>").addClass("btn-floating halfway-fab waves-effect waves-light bg-yellow btn-subtract").append($("<i>").addClass("material-icons").text("trending_down"));
+
+
 
     $productTitle = $("<div>").addClass("card-image").append($("<img>").attr("src", "https://www.w3schools.com/w3images/fjords.jpg")).append($("<span>").addClass("card-title").text(product.name)).append($subtractBtn);
 
     $productContent = $("<div>").addClass("card-content").append($("<p>").text("quantity : " + product.quantity)).append($("<p>").text("packaging size : " + product.packagingSize)).append($("<p>").text("expiration date : " + product.expirationDate));
 
-    $product = $("<div>").addClass("col s12 m6 m4").append($("<div>").addClass("card").append($productTitle).append($productContent));
+    $product = $("<div>").addClass("col s12 m6 m4").append($("<div>").addClass("card").attr("id", product.name).append($productTitle).append($productContent));
 
 
 
 
 
     $("#productsHTML").append($product);
-    //document.getElementById('productsHTML').appendChild(item);
 
+}
 
-    /* <div class="col s12 m6 l4">
-                 <div class="card">
-                     <div class="card-image">
-                         <img src="https://www.w3schools.com/w3images/fjords.jpg">
-                         <span class="card-title">Card Title</span>
-                         <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                     </div>
-                     <div class="card-content">
-                         <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-                     </div>
-                 </div>
-             </div>*/
+/*Function to subtract the quantity*/
+function subtractFromItem(id) {
+    var listId = products.idList.indexOf(id);
+    if (products.productList[listId].quantity === 1) {
+        deleteItem(id, listId);
+    } else {
+        products.productList[listId].quantity -= 1;
+        updateProducts();
+        renderProducts();
+    }
+
+}
+
+/*Function to delete an item*/
+function deleteItem(id, listId) {
+    products.productList.splice(products.productList[listId], 1);
+    products.idList.splice(products.productList[listId], 1);
+    updateProducts();
+    renderProducts();
+
 }
