@@ -23,7 +23,6 @@ $(document).ready(function () {
         selectYears: 15
     });
 
-
     //ADD PRODUCT
     $("#addProduct").click(function () {
         var name = $("#productName").val();
@@ -44,7 +43,6 @@ $(document).ready(function () {
         subtractFromItem(id);
     });
 
-
 });
 
 //function to add a new product to the list
@@ -55,7 +53,6 @@ function addProduct(name, quantity, packagingSize, expirationDate) {
     updateProducts();
     renderProduct(product);
 }
-
 
 //function to update JSON
 function updateProducts() {
@@ -76,17 +73,11 @@ function renderProduct(product) {
 
     $subtractBtn = $("<a>").addClass("btn-floating halfway-fab waves-effect waves-light bg-yellow btn-subtract").append($("<i>").addClass("material-icons").text("trending_down"));
 
-
-
     $productTitle = $("<div>").addClass("card-image").append($("<img>").attr("src", "https://www.w3schools.com/w3images/fjords.jpg")).append($("<span>").addClass("card-title").text(product.name)).append($subtractBtn);
 
     $productContent = $("<div>").addClass("card-content").append($("<p>").text("quantity : " + product.quantity)).append($("<p>").text("packaging size : " + product.packagingSize)).append($("<p>").text("expiration date : " + product.expirationDate));
 
     $product = $("<div>").addClass("col s12 m6 m4").append($("<div>").addClass("card").attr("id", product.name).append($productTitle).append($productContent));
-
-
-
-
 
     $("#productsHTML").append($product);
 
