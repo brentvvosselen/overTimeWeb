@@ -95,7 +95,7 @@ function renderProduct(product) {
 /*Function to subtract the quantity*/
 function subtractFromItem(id) {
     var listId = products.idList.indexOf(id);
-    if (products.productList[listId].quantity === 1) {
+    if (products.productList[listId].quantity === "1" || products.productList[listId].quantity === 1) {
         deleteItem(id, listId);
     } else {
         products.productList[listId].quantity -= 1;
@@ -107,8 +107,9 @@ function subtractFromItem(id) {
 
 /*Function to delete an item*/
 function deleteItem(id, listId) {
-    products.productList.splice(products.productList[listId], 1);
-    products.idList.splice(products.productList[listId], 1);
+
+    products.productList.splice($.inArray(products.productList[listId], products.productList), 1);
+    products.idList.splice($.inArray(id, products.idList), 1);
     updateProducts();
     renderProducts();
 
