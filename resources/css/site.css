@@ -44,7 +44,7 @@ header h1 {
     height: 50px;
     line-height: 50px;
     width: 100%;
-    font-size: 15px;
+    font-size: 0.9rem;
     color: #eee;
     float: left;
     padding: 0 60px 0 0;
@@ -91,6 +91,11 @@ header a svg .fill {
 
 
 /*change card layout*/
+
+.card-image {
+    height: 7em;
+    background: var(--purple);
+}
 
 
 /*changing label colors*/

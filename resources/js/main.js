@@ -20,7 +20,8 @@ $(document).ready(function () {
     //DATEPICKER
     $('.datepicker').pickadate({
         selectMonths: true,
-        selectYears: 15
+        selectYears: 15,
+        format: 'yyyy-mm-dd'
     });
 
     //ADD PRODUCT
@@ -73,7 +74,7 @@ function renderProduct(product) {
 
     $subtractBtn = $("<a>").addClass("btn-floating halfway-fab waves-effect waves-light bg-yellow btn-subtract").append($("<i>").addClass("material-icons").text("trending_down"));
 
-    $productTitle = $("<div>").addClass("card-image").append($("<img>").attr("src", "https://www.w3schools.com/w3images/fjords.jpg")).append($("<span>").addClass("card-title").text(product.name)).append($subtractBtn);
+    $productTitle = $("<div>").addClass("card-image").append($("<span>").addClass("card-title").text(product.name)).append($subtractBtn);
 
     $productContent = $("<div>").addClass("card-content").append($("<p>").text("quantity : " + product.quantity)).append($("<p>").text("packaging size : " + product.packagingSize)).append($("<p>").text("expiration date : " + product.expirationDate));
 
