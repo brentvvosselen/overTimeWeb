@@ -39,7 +39,8 @@ $(document).ready(function () {
     renderProducts();
 
     //SUBTRACT QUANTITY
-    $(document).delegate('.btn-subtract', 'click', function () {
+
+    $("#productsHTML").delegate('.btn-subtract', 'click', function () {
         var id = this.parentNode.parentNode.id;
         subtractFromItem(id);
     });
